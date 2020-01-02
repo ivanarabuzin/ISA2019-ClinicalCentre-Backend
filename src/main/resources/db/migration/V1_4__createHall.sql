@@ -13,7 +13,7 @@ CREATE TABLE `hall` (
   KEY `FK_hall_clinic` (`clinic_id`)
 );
 
-INSERT INTO `clinic` (`id`, `name`, `is_reserved`, `description`, `deleted`, `date_created`, `date_deleted`, `date_updated`, `clinic_id`) VALUES
-('1', 'Hall 1', 'Clinic address 1', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1),
-('2', 'Hall 2', 'Clinic address 2', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1),
-('3', 'Hall 3', 'Clinic address 3', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1);
+INSERT INTO `hall` (`id`, `name`, `is_reserved`, `deleted`, `date_created`, `date_deleted`, `date_updated`, `clinic_id`) VALUES
+('1', 'Hall 1', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1),
+('2', 'Hall 2', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1),
+('3', 'Hall 3', 0, 0, '2011-11-11 00:00:00','2011-11-11 00:00:00', '2011-11-11 00:00:00', 1);

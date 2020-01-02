@@ -1,5 +1,6 @@
 package com.main.app.domain.model;
 
+import com.main.app.domain.dto.PriceDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Prices extends AbstractEntity {
+public class Price extends AbstractEntity {
 
     @NotNull
     private String description;
@@ -21,5 +22,17 @@ public class Prices extends AbstractEntity {
     private double price;
 
     @ManyToOne
-    private
+    private Clinic clinic;
+
+    public Price (String description, double price, Clinic clinic) {
+        this.description  =description;
+        this.price = price;
+        this.clinic = clinic;
+    }
+
+    public Price(PriceDTO price) {
+        this.description = price.getDescription();
+        this.price = price.getPrice();
+        this.id = price.getId();
+    }
 }

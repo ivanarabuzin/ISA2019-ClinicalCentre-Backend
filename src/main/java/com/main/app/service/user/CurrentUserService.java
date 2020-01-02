@@ -1,6 +1,6 @@
 package com.main.app.service.user;
 
-import com.main.app.domain.dto.user.UserDTO;
+import com.main.app.domain.dto.UserDTO;
 import com.main.app.domain.model.user.User;
 
 import java.util.Optional;

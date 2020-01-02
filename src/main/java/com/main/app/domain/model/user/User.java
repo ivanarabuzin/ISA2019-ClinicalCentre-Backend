@@ -1,6 +1,8 @@
 package com.main.app.domain.model.user;
 
+import com.main.app.domain.dto.UserDTO;
 import com.main.app.domain.model.AbstractEntity;
+import com.main.app.domain.model.Clinic;
 import com.main.app.enums.Role;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,15 +38,37 @@ public class User extends AbstractEntity {
 
     private Instant resetTokenExpirationDate;
 
-    private String deviceToken;
+    private boolean registrationConfirmed;
+
+    private String registrationToken;
+
+    private String address;
+
+    private String city;
+
+    private String country;
+
+    private String phoneNumber;
+
+    private String jbo;
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @ManyToOne
+    private Clinic clinic;
 
     public User(@NotNull String password, @NotNull String email, @NotNull String name, @NotNull String surname) {
         this.password = password;
         this.email = email;
         this.name = name;
         this.surname = surname;
+        this.registrationConfirmed = false;
+    }
+
+    public User(UserDTO user) {
+        this.id = user.getId();
+        this.email = user.getEmail();
+        this.role = user.getRole();
     }
 }

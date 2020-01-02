@@ -28,7 +28,7 @@ public abstract class AbstractEntity<I> implements Serializable {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY
     )
-    private Long id;
+    protected Long id;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -38,4 +38,6 @@ public abstract class AbstractEntity<I> implements Serializable {
     private Instant dateUpdated;
 
     private Instant dateDeleted;
+
+    private boolean deleted;
 }

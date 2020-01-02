@@ -1,7 +1,7 @@
 package com.main.app.service.user;
 
 import com.main.app.config.SecurityUtils;
-import com.main.app.domain.dto.user.UserDTO;
+import com.main.app.domain.dto.UserDTO;
 import com.main.app.domain.model.user.User;
 import com.main.app.repository.user.UserRepository;
 import com.main.app.util.ObjectMapperUtils;

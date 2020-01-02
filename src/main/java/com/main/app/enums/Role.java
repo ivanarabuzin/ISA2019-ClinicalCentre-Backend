@@ -6,5 +6,5 @@ package com.main.app.enums;
  *
  */
 public enum Role {
-    SUPERADMIN, ADMIN, DRIVER, CUSTOMER
+    SUPERADMIN, ADMIN, NURSE, DOCTOR, PATIENT
 }

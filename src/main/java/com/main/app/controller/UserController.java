@@ -1,6 +1,6 @@
 package com.main.app.controller;
 
-import com.main.app.domain.dto.user.UserDTO;
+import com.main.app.domain.dto.UserDTO;
 import com.main.app.service.user.CurrentUserService;
 import com.main.app.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
