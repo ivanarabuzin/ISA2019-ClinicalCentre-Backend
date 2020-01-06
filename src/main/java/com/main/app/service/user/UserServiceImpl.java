@@ -1,5 +1,6 @@
 package com.main.app.service.user;
 
+import com.main.app.config.SecurityUtils;
 import com.main.app.domain.model.user.User;
 import com.main.app.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,11 @@ public class UserServiceImpl implements UserService {
         this.currentUserService = currentUserService;
     }
 
+    public Optional<User> getCurrentUser() {
+        Optional<String> username = SecurityUtils.getCurrentUserLogin();
 
+        return this.userRepository.findOneByEmail(username.get());
+    }
 
     @Override
     public Optional<User> findByEmail(String email) {

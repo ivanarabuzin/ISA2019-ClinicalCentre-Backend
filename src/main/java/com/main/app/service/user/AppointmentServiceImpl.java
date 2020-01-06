@@ -1,4 +1,31 @@
 package com.main.app.service.user;
 
-public class AppointmentServiceImpl {
+import com.main.app.domain.model.Appointment;
+import com.main.app.domain.model.Clinic;
+import com.main.app.repository.user.AppointmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class AppointmentServiceImpl implements AppointmentService {
+
+    private AppointmentRepository appointmentRepository;
+
+    @Autowired
+    AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
+        this.appointmentRepository = appointmentRepository;
+    }
+
+    @Override
+    public List<Appointment> findAllByClinic(Clinic clinic, Pageable pageable) {
+        return appointmentRepository.findAllByClinic(clinic, pageable);
+    }
+
+    @Override
+    public Appointment save(Appointment appointment) {
+        return appointmentRepository.save(appointment);
+    }
 }
