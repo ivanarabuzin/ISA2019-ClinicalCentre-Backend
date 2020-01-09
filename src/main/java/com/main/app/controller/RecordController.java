@@ -1,9 +1,10 @@
 package com.main.app.controller;
 
 import com.main.app.domain.dto.Entities;
+import com.main.app.domain.dto.RecordDTO;
 import com.main.app.domain.dto.SurgeryDTO;
-import com.main.app.domain.model.Surgery;
-import com.main.app.service.user.SurgeryService;
+import com.main.app.domain.model.Record;
+import com.main.app.service.user.RecordService;
 import com.main.app.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -11,17 +12,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
-@RequestMapping("/api/surgery")
-public class SurgeryController {
+@RequestMapping("/api/record")
+public class RecordController {
 
-    private SurgeryService surgeryService;
+    private RecordService recordService;
     private UserService userService;
 
     @Autowired
-    public SurgeryController(SurgeryService surgeryService, UserService userService) {
-        this.surgeryService = surgeryService;
+    public RecordController(RecordService recordService, UserService userService) {
+        this.recordService = recordService;
         this.userService = userService;
     }
 
@@ -29,15 +29,15 @@ public class SurgeryController {
     public ResponseEntity<Entities> findAllByPatient(Pageable pageable) {
 
         Entities result = new Entities();
-        result.setEntities(surgeryService.findAllByPatient(userService.getCurrentUser().get(), pageable));
+        result.setEntities(recordService.findAllByPatient(userService.getCurrentUser().get(), pageable));
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping(path="/")
-    public ResponseEntity<SurgeryDTO> add(@RequestBody SurgeryDTO surgeryDTO) {
+    public ResponseEntity<RecordDTO> add(@RequestBody RecordDTO recordDTO) {
 
-        Surgery saved = surgeryService.save(new Surgery(surgeryDTO));
-        return new ResponseEntity<>(new SurgeryDTO(saved), HttpStatus.OK);
+        Record saved = recordService.save(new Record(recordDTO));
+        return new ResponseEntity<>(new RecordDTO(saved), HttpStatus.OK);
     }
 }
