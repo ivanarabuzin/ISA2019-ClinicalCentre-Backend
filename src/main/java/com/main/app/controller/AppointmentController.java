@@ -2,14 +2,11 @@ package com.main.app.controller;
 
 import com.main.app.domain.dto.AppointmentDTO;
 import com.main.app.domain.dto.Entities;
-import com.main.app.domain.dto.SurgeryDTO;
 import com.main.app.domain.model.Appointment;
 import com.main.app.domain.model.Clinic;
-import com.main.app.domain.model.Surgery;
 import com.main.app.repository.user.ClinicRepository;
-import com.main.app.service.user.AppointmentService;
-import com.main.app.service.user.SurgeryService;
-import com.main.app.service.user.UserService;
+import com.main.app.service.AppointmentService;
+import com.main.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

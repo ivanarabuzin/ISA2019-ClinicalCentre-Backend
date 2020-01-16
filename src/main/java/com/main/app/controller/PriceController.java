@@ -2,15 +2,10 @@ package com.main.app.controller;
 
 import com.main.app.domain.dto.Entities;
 import com.main.app.domain.dto.PriceDTO;
-import com.main.app.domain.dto.RecordDTO;
-import com.main.app.domain.dto.SurgeryDTO;
 import com.main.app.domain.model.Clinic;
 import com.main.app.domain.model.Price;
-import com.main.app.domain.model.Record;
 import com.main.app.repository.user.ClinicRepository;
-import com.main.app.service.user.PriceService;
-import com.main.app.service.user.RecordService;
-import com.main.app.service.user.UserService;
+import com.main.app.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

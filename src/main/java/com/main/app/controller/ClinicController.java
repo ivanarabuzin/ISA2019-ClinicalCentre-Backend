@@ -2,12 +2,8 @@ package com.main.app.controller;
 
 import com.main.app.domain.dto.ClinicDTO;
 import com.main.app.domain.dto.Entities;
-import com.main.app.domain.dto.HallDTO;
 import com.main.app.domain.model.Clinic;
-import com.main.app.domain.model.Hall;
-import com.main.app.repository.user.ClinicRepository;
-import com.main.app.service.user.ClinicService;
-import com.main.app.service.user.HallService;
+import com.main.app.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

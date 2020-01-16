@@ -1,6 +1,5 @@
-package com.main.app.service.user;
+package com.main.app.service;
 
-import com.main.app.domain.model.Appointment;
 import com.main.app.domain.model.Record;
 import com.main.app.domain.model.user.User;
 import com.main.app.repository.user.RecordRepository;

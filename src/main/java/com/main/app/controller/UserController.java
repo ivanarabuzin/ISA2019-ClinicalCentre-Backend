@@ -1,8 +1,9 @@
 package com.main.app.controller;
 
 import com.main.app.domain.dto.UserDTO;
-import com.main.app.service.user.CurrentUserService;
-import com.main.app.service.user.UserService;
+import com.main.app.domain.model.user.User;
+import com.main.app.service.CurrentUserService;
+import com.main.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,5 +46,12 @@ public class UserController {
                 currentUserService.getCurrentUserDTO(),
                 HttpStatus.OK
         );
+    }
+
+    @PostMapping(path="/")
+    public ResponseEntity<UserDTO> register(@RequestBody UserDTO userDTO) {
+
+        User saved = userService.save(new User(userDTO));
+        return new ResponseEntity<>(new UserDTO(saved), HttpStatus.OK);
     }
 }

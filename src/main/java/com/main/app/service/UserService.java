@@ -1,4 +1,4 @@
-package com.main.app.service.user;
+package com.main.app.service;
 
 import com.main.app.domain.model.user.User;
 
@@ -13,5 +13,6 @@ public interface UserService {
     Optional<User> findByEmail(String email);
     Optional<User> findById(Long id);
     User save(User user);
+    User register(User user);
     Optional<User> getCurrentUser();
 }

@@ -1,4 +1,4 @@
-package com.main.app.service.user;
+package com.main.app.service;
 
 import com.main.app.domain.model.Surgery;
 import com.main.app.domain.model.user.User;

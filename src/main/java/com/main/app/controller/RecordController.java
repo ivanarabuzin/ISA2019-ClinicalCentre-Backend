@@ -2,10 +2,9 @@ package com.main.app.controller;
 
 import com.main.app.domain.dto.Entities;
 import com.main.app.domain.dto.RecordDTO;
-import com.main.app.domain.dto.SurgeryDTO;
 import com.main.app.domain.model.Record;
-import com.main.app.service.user.RecordService;
-import com.main.app.service.user.UserService;
+import com.main.app.service.RecordService;
+import com.main.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
