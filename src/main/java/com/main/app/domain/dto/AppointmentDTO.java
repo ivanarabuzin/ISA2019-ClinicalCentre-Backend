@@ -15,7 +15,7 @@ public class AppointmentDTO {
 
     private Long id;
     private Instant date;
-    private String type;
+    private AppointmentTypeDTO type;
     private double price;
     private boolean isTaken;
     private String description;
@@ -27,7 +27,7 @@ public class AppointmentDTO {
     public AppointmentDTO(Appointment appointment) {
         this.id = appointment.getId();
         this.date = appointment.getDate();
-        this.type = appointment.getType();
+        this.type = new AppointmentTypeDTO(appointment.getType());
         this.price = appointment.getPrice();
         this.isTaken = appointment.isTaken();
         this.description = appointment.getDescription();

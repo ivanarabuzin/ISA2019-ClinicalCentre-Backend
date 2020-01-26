@@ -20,7 +20,6 @@ import java.time.Instant;
 public class Appointment extends AbstractEntity {
 
     private Instant date;
-    private String type;
     private double price;
     private boolean isTaken;
     private  String description;
@@ -37,7 +36,10 @@ public class Appointment extends AbstractEntity {
     @ManyToOne
     private Clinic clinic;
 
-    public Appointment(Instant date, String type, double price, boolean isTaken, Hall hall, User doctor, User patient, String description, Clinic clinic) {
+    @ManyToOne
+    private AppointmentType type;
+
+    public Appointment(Instant date, AppointmentType type, double price, boolean isTaken, Hall hall, User doctor, User patient, String description, Clinic clinic) {
 
         this.date = date;
         this.type = type;
@@ -53,7 +55,7 @@ public class Appointment extends AbstractEntity {
     public Appointment(AppointmentDTO appointment) {
         this.id = appointment.getId();
         this.date = appointment.getDate();
-        this.type = appointment.getType();
+        this.type = new AppointmentType(appointment.getType());
         this.price = appointment.getPrice();
         this.isTaken = appointment.isTaken();
         this.description = appointment.getDescription();

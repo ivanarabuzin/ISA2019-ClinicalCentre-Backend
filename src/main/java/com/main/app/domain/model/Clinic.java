@@ -22,6 +22,10 @@ public class Clinic extends AbstractEntity {
 
     private String description;
 
+    private String city;
+
+    private String phoneNumber;
+
     public Clinic(@NotNull String name, @NotNull String address, String description) {
         this.name = name;
         this.address = address;
@@ -33,5 +37,7 @@ public class Clinic extends AbstractEntity {
         this.name = clinic.getName();
         this.address = clinic.getAddress();
         this.description = clinic.getDescription();
+        this.city = clinic.getCity();
+        this.phoneNumber = clinic.getPhoneNumber();
     }
 }

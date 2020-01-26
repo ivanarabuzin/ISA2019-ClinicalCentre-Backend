@@ -40,6 +40,8 @@ public class User extends AbstractEntity {
 
     private boolean registrationConfirmed;
 
+    private boolean adminRegistrationConfirmed;
+
     private String registrationToken;
 
     private String address;
@@ -70,5 +72,13 @@ public class User extends AbstractEntity {
         this.id = user.getId();
         this.email = user.getEmail();
         this.role = user.getRole();
+        this.name = user.getName();
+        this.password = user.getPassword();
+        this.surname = user.getSurname();
+        this.address = user.getAddress();
+        this.country = user.getCountry();
+        this.phoneNumber = user.getPhoneNumber();
+        this.jbo = user.getJbo();
+        this.city = user.getCity();
     }
 }

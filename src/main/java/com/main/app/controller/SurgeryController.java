@@ -6,6 +6,7 @@ import com.main.app.domain.model.Surgery;
 import com.main.app.service.SurgeryService;
 import com.main.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,11 @@ public class SurgeryController {
     public ResponseEntity<Entities> findAllByPatient(Pageable pageable) {
 
         Entities result = new Entities();
-        result.setEntities(surgeryService.findAllByPatient(userService.getCurrentUser().get(), pageable));
+
+        Page<Surgery> surgeries = surgeryService.findAllByPatient(userService.getCurrentUser().get(), pageable);
+
+        result.setEntities(surgeries.getContent());
+        result.setTotal(surgeries.getTotalElements());
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

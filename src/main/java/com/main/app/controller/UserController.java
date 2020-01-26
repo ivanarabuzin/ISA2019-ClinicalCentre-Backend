@@ -1,10 +1,13 @@
 package com.main.app.controller;
 
+import com.main.app.domain.dto.Entities;
 import com.main.app.domain.dto.UserDTO;
 import com.main.app.domain.model.user.User;
 import com.main.app.service.CurrentUserService;
 import com.main.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,10 +51,76 @@ public class UserController {
         );
     }
 
+    @GetMapping(path="/unconfirmedUsers")
+    public ResponseEntity<Entities> getUnconfirmedUsers(Pageable page) {
+        Entities result = new Entities();
+
+        Page<User> users = userService.getUnconfirmedUsers(page);
+
+        result.setEntities(users.getContent());
+        result.setTotal(users.getTotalElements());
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(path="/confirmUser/{id}")
+    public ResponseEntity<UserDTO> confirmUser(@PathVariable Long id) {
+
+        User user = userService.confirmUser(id);
+
+        if(user == null) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
+    @PostMapping(path="/declineUser/{id}/{message}")
+    public ResponseEntity<UserDTO> declineUser(@PathVariable Long id, @PathVariable String message) {
+
+        User user = userService.declineUser(id, message);
+
+        if(user == null) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new UserDTO(user), HttpStatus.OK);
+    }
+
     @PostMapping(path="/")
     public ResponseEntity<UserDTO> register(@RequestBody UserDTO userDTO) {
 
-        User saved = userService.save(new User(userDTO));
+        User saved = userService.register(new User(userDTO));
+
+        if(saved == null) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(new UserDTO(saved), HttpStatus.OK);
+    }
+
+    @PostMapping(path="/activate/{token}")
+    public ResponseEntity<UserDTO> activate(@PathVariable String token) {
+
+        if(!userService.aktivate(token))
+        {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @PostMapping(path="/edit")
+    public ResponseEntity<UserDTO> editUser(@RequestBody UserDTO userDTO) {
+
+        User user = currentUserService.getCurrentUser().get();
+        user.setName(userDTO.getName());
+        user.setSurname(userDTO.getSurname());
+        user.setAddress(userDTO.getAddress());
+        user.setCity(userDTO.getCity());
+        user.setCountry(userDTO.getCountry());
+        user.setPhoneNumber(userDTO.getPhoneNumber());
+
+        User saved = userService.editProfile(user);
+
         return new ResponseEntity<>(new UserDTO(saved), HttpStatus.OK);
     }
 }

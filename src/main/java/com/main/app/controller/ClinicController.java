@@ -5,6 +5,7 @@ import com.main.app.domain.dto.Entities;
 import com.main.app.domain.model.Clinic;
 import com.main.app.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,11 @@ public class ClinicController {
 
 
         Entities result = new Entities();
-        result.setEntities(clinicService.findAll(pageable).getContent());
+
+        Page<Clinic> clinics = clinicService.findAll(pageable);
+
+        result.setEntities(clinics.getContent());
+        result.setTotal(clinics.getTotalElements());
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
