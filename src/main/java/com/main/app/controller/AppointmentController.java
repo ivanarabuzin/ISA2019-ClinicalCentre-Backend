@@ -57,4 +57,12 @@ public class AppointmentController {
         Appointment saved = appointmentService.save(new Appointment(appointmentDTO));
         return new ResponseEntity<>(new AppointmentDTO(saved), HttpStatus.OK);
     }
+
+    @PostMapping(path="/fromTermin/{terminId}")
+    public ResponseEntity<AppointmentDTO> fromTermin(@PathVariable long terminId) {
+
+        Appointment appointment = appointmentService.createFromTermin(terminId);
+
+        return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
+    }
 }

@@ -24,6 +24,6 @@ INSERT INTO `user` (`id`, `email`, `password`, `admin_registration_confirmed`, `
 ('4', 'test4@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Doktor', 'Mikic', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
 '2011-11-11 00:00:00', 'Address 5', 'City 2', 'Country 1', '+3813333333333', '123456789', '1'),
 
-('5', 'test5@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Admin', 'Admin', 1, 'ADMIN', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+('5', 'aivanarabuzin.isa2019@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Admin', 'Admin', 1, 'ADMIN', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
 '2011-11-11 00:00:00', 'Address 5', 'City 2', 'Country 1', '+3813333333333', '123456789', '1');
 

@@ -19,11 +19,15 @@ public class DoctorTerminDTO {
     private User doctor;
     private boolean free;
     AppointmentType type;
+    private double price;
+    private String time;
 
     public DoctorTerminDTO(DoctorTermin termin) {
         this.date = termin.getDate();
         this.doctor = termin.getDoctor();
         this.free = termin.isFree();
         this.type = termin.getType();
+        this.price = termin.getPrice();
+        this.time = termin.getTime();
     }
 }

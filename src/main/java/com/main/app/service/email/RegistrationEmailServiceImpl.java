@@ -14,6 +14,7 @@ public class RegistrationEmailServiceImpl implements RegistrationEmailService {
 
     private static final String EMAIL_SUBJECT = "Registration";
     private static final String EMAIL_SUBJECT_DECLINE = "Registration Decline";
+    private static final String EMAIL_SUBJECT_APPOINTMENT_NOTIFICATION = "New appointment";
 
     private static final String MESSAGE_BEFORE =
             "Hi, your contract is saved by our admin team. You can register on link bellow.";
@@ -50,6 +51,15 @@ public class RegistrationEmailServiceImpl implements RegistrationEmailService {
                 emailFrom,
                 emailTo,
                 EMAIL_SUBJECT_DECLINE,
+                message
+        );
+    }
+
+    public void sendAdminAppointmentNotification(String emailFrom, String emailTo, String message) {
+        emailClient.sendMimeEmail(
+                emailFrom,
+                emailTo,
+                EMAIL_SUBJECT_APPOINTMENT_NOTIFICATION,
                 message
         );
     }

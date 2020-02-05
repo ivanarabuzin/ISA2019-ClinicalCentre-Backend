@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
 @Entity
-@NoArgsConstructor
 @Getter
 @Setter
 public class Appointment extends AbstractEntity {
@@ -23,6 +22,9 @@ public class Appointment extends AbstractEntity {
     private double price;
     private boolean isTaken;
     private  String description;
+
+    private boolean adminAccepted;
+    private boolean patientAccepted;
 
     @ManyToOne
     private Hall hall;
@@ -38,6 +40,10 @@ public class Appointment extends AbstractEntity {
 
     @ManyToOne
     private AppointmentType type;
+
+    public Appointment() {
+
+    }
 
     public Appointment(Instant date, AppointmentType type, double price, boolean isTaken, Hall hall, User doctor, User patient, String description, Clinic clinic) {
 

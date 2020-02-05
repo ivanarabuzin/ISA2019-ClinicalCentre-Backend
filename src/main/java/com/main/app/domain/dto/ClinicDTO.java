@@ -18,6 +18,7 @@ public class ClinicDTO
     private String description;
     private String city;
     private String phoneNumber;
+    private double price;
 
     public ClinicDTO(Clinic clinic) {
         this.id = clinic.getId();
@@ -26,5 +27,6 @@ public class ClinicDTO
         this.description = clinic.getDescription();
         this.city = clinic.getCity();
         this.phoneNumber = clinic.getPhoneNumber();
+        this.price = clinic.getPrice();
     }
 }

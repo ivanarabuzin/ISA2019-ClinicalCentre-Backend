@@ -23,6 +23,10 @@ public class DoctorTermin extends AbstractEntity{
 
     private boolean free;
 
+    private double price;
+
+    private String time;
+
     @ManyToOne
     AppointmentType type;
 
@@ -32,5 +36,7 @@ public class DoctorTermin extends AbstractEntity{
         this.doctor = termin.getDoctor();
         this.free = termin.isFree();
         this.type = termin.getType();
+        this.price = termin.getPrice();
+        this.time = termin.getTime();
     }
 }

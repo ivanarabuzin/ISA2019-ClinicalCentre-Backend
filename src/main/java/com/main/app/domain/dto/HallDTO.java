@@ -14,6 +14,11 @@ public class HallDTO {
     private boolean isReserved;
 
     public HallDTO(Hall hall) {
+
+        if(hall == null) {
+            return;
+        }
+
         this.id = hall.getId();
         this.isReserved = hall.isReserved();
     }

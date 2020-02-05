@@ -26,6 +26,9 @@ public class Clinic extends AbstractEntity {
 
     private String phoneNumber;
 
+    @Transient
+    private double price;
+
     public Clinic(@NotNull String name, @NotNull String address, String description) {
         this.name = name;
         this.address = address;
@@ -39,5 +42,6 @@ public class Clinic extends AbstractEntity {
         this.description = clinic.getDescription();
         this.city = clinic.getCity();
         this.phoneNumber = clinic.getPhoneNumber();
+        this.price = clinic.getPrice();
     }
 }

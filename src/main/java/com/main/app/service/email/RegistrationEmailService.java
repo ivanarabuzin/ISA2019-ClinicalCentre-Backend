@@ -7,5 +7,7 @@ public interface RegistrationEmailService {
 
     void sendEmail(String url, String pathParam, String emailFrom, String emailTo, String urlPart);
     void sendDeclineEmail(String emailFrom, String emailTo, String message);
+
+    void sendAdminAppointmentNotification(String emailFrom, String emailTo, String message);
 }
 

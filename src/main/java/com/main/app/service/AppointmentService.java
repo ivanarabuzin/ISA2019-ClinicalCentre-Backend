@@ -9,8 +9,11 @@ import java.util.List;
 
 public interface AppointmentService {
 
+
     List<Appointment> findAllByClinic(Clinic clinic, Pageable pageable);
     List<Appointment> findAllByPatient(User patient, Pageable pageable);
 
     Appointment save(Appointment appointment);
+    Appointment createFromTermin(long terminId);
+
 }
