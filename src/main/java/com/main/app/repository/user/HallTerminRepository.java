@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface HallTerminRepository extends JpaRepository<Hall, Long> {
+public interface HallTerminRepository extends JpaRepository<HallTermin, Long> {
 
-    List<HallTermin> findAllByClinic(Clinic clinic);
+    List<HallTermin> findAll();
 }

@@ -26,7 +26,16 @@ public class HallTerminServiceImpl implements HallTerminService {
 
     public List<HallTermin> findAllByClinicAndDate(String date, Clinic clinic) {
 
-        List<HallTermin> termins = hallTerminRepository.findAllByClinic(clinic);
+        List<HallTermin> terminsDatabase = hallTerminRepository.findAll();
+
+        List<HallTermin> termins = new ArrayList<HallTermin>();
+
+        for(HallTermin termin: terminsDatabase) {
+
+            if(termin.getHall().getClinic().getId() == clinic.getId()) {
+                termins.add(termin);
+            }
+        }
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate day = LocalDate.parse(date, dtf);

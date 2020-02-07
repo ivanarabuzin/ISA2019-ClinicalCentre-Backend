@@ -22,7 +22,7 @@ INSERT INTO `user` (`id`, `email`, `password`, `admin_registration_confirmed`, `
 '2011-11-11 00:00:00', 'Osmana Đikića 3', 'Beograd', 'Serbia', '+381113292411', '85239741236', '1'),
 
 ('4', 'test4@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Sanja', 'Bulatović', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
-'2011-11-11 00:00:00', 'Osmana Đikića 3', 'Beograd', 'Serbia', '+3813333333333', '9638596471296', '1'),
+'2011-11-11 00:00:00', 'Osmana Đikića 3', 'Beograd', 'Serbia', '+3813333333333', '9638596471296', '9'),
 
 ('5', 'aivanarabuzin.isa2019@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Iva', 'Ivić', 1, 'ADMIN', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
 '2011-11-11 00:00:00', 'Osmana Đikića 3', 'Beograd', 'Serbia', '+3813333333333', '8956321458', '1'),
@@ -39,6 +39,33 @@ INSERT INTO `user` (`id`, `email`, `password`, `admin_registration_confirmed`, `
 ('9', 'test8@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Igor', 'Tomas', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
 '2011-11-11 00:00:00', 'Bulevar Zorana Đinđića 14-24', 'Niš', 'Serbia', '+38118853777', '888521364793', '8'),
 
-('10', 'test9@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Dimitrije', 'Jeremić', 1, 'ADMIN', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
-'2011-11-11 00:00:00', 'Sabljarska 1', 'Kanjiža', 'Serbia', '+38124856933', '18523697445', '10');
+('10', 'test9@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Dimitrije', 'Jeremić', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Sabljarska 1', 'Kanjiža', 'Serbia', '+38124856933', '18523697445', '10'),
+
+('11', 'test10@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Mila', 'Marić', 1, 'PATIENT', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Drum bb', 'Novi Sad', 'Serbia', '+381218292411', '9632577746', NULL),
+
+('12', 'test11@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Veljko', 'Petrović', 1, 'PATIENT', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Pećka 22', 'Paraćin', 'Serbia', '+381353292411', '85697423654', NULL),
+
+('13', 'test12@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Saška', 'Sić', 1, 'PATIENT', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Pavla Jurišića 19s', 'Novi Sad', 'Serbia', '+381213292411', '858852334', NULL),
+
+('14', 'test13@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Dragana', 'Jovanović', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Bulevar Zorana Đinđića 106a', 'Beograd', 'Serbia', '+381115633333', '998523456789', '3'),
+
+('15', 'test14@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Mirjana', 'Stojković', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Bulevar 106a', 'Beograd', 'Serbia', '+381115633333', '998523456789', '4'),
+
+('16', 'test15@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Rastko', 'Ilić', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Zoran Đinđić 6', 'Beograd', 'Serbia', '+381115633333', '998523456789', '2'),
+
+('17', 'test16@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Saša', 'Cvetković', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Alekse Šantića 22', 'Beograd', 'Serbia', '+381115633333', '998523456789', '5'),
+
+('18', 'test17@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Miroslav', 'Dinić', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Tolstojeva 89', 'Beograd', 'Serbia', '+381115633333', '998523456789', '6'),
+
+('19', 'test18@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Goran', 'Cvijović', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Miše Dimitrijevića 6', 'Beograd', 'Serbia', '+381115633333', '998523456789', '7');
 
