@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class HallDTO {
 
+    private String name;
     private Long id;
     private boolean isReserved;
 
@@ -19,6 +20,7 @@ public class HallDTO {
             return;
         }
 
+        this.name = hall.getName();
         this.id = hall.getId();
         this.isReserved = hall.isReserved();
     }
