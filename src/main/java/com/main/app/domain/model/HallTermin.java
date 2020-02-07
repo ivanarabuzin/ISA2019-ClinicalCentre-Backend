@@ -1,33 +1,37 @@
-package com.main.app.domain.dto;
+package com.main.app.domain.model;
 
-import com.main.app.domain.model.AppointmentType;
-import com.main.app.domain.model.DoctorTermin;
+import com.main.app.domain.dto.DoctorTerminDTO;
+import com.main.app.domain.dto.HallTerminDTO;
 import com.main.app.domain.model.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.time.Instant;
 
+@Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class DoctorTerminDTO {
+public class HallTermin extends AbstractEntity {
 
     private Instant date;
-    private User doctor;
+
+    @ManyToOne
+    private Hall hall;
+
     private boolean free;
-    AppointmentType type;
-    private double price;
+
     private String time;
 
-    public DoctorTerminDTO(DoctorTermin termin) {
+    public HallTermin(HallTerminDTO termin) {
+
         this.date = termin.getDate();
-        this.doctor = termin.getDoctor();
+        this.hall = new Hall(termin.getHall());
         this.free = termin.isFree();
-        this.type = termin.getType();
-        this.price = termin.getPrice();
         this.time = termin.getTime();
     }
+
 }
