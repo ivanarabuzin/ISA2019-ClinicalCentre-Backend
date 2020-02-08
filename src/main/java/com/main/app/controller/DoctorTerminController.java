@@ -4,6 +4,7 @@ import com.main.app.domain.dto.ClinicDTO;
 import com.main.app.domain.dto.Entities;
 import com.main.app.domain.model.AppointmentType;
 import com.main.app.domain.model.Clinic;
+import com.main.app.domain.model.DoctorTermin;
 import com.main.app.repository.user.AppointmentTypeRepository;
 import com.main.app.repository.user.ClinicRepository;
 import com.main.app.repository.user.DoctorTerminRepository;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.xml.ws.Response;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -57,6 +59,18 @@ public class DoctorTerminController {
         Entities entities = new Entities();
 
         entities.setEntities(doctorTerminService.findAllClinicsByType(type.get(), date, city));
+
+        return new ResponseEntity<>(entities, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/free/{clinicId}")
+    public ResponseEntity<Entities> getFreeTerminsForClinic(@PathVariable long clinicId) {
+
+        List<DoctorTermin> termins = doctorTerminService.getFreeTerminsForClinic(clinicId);
+
+        Entities entities = new Entities();
+
+        entities.setEntities(termins);
 
         return new ResponseEntity<>(entities, HttpStatus.OK);
     }

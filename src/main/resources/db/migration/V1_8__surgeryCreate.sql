@@ -32,19 +32,21 @@ CREATE TABLE `appointment` (
     `price` double NOT NULL,
     `description` varchar(255) NOT NULL,
     `is_taken` bit(1) NOT NULL,
-    `admin_accepted` bit(1) DEFAULT 0,
-    `patient_accepted` bit(1) DEFAULT 0,
+    `admin_accepted` bit(1) DEFAULT 1,
+    `patient_accepted` bit(1) DEFAULT 1,
     `patient_id` bigint(20) DEFAULT NULL,
     `hall_id` bigint(20),
     `doctor_id` bigint(20) NOT NULL,
     `clinic_id` bigint(20) NOT NULL,
     `type_id` bigint(20) NOT NULL,
+    `termin_id` bigint(20) DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `FK_app_patient` (`patient_id`),
     KEY `FK_app_type` (`type_id`),
     KEY `FK_app_hall` (`hall_id`),
     KEY `FK_doctor_patient` (`doctor_id`),
-    KEY `FK_clinic_patient` (`clinic_id`)
+    KEY `FK_clinic_patient` (`clinic_id`),
+    KEY `FK_termin_appointment` (`termin_id`)
 );
 
 INSERT INTO `appointment` (`id`, `date`, `type_id`, `description`, `price`, `is_taken`, `deleted`, `date_created`, `date_deleted`, `date_updated`, `clinic_id`, `patient_id`, `hall_id`, `doctor_id`) VALUES

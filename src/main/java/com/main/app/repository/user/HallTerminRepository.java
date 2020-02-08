@@ -11,4 +11,5 @@ import java.util.List;
 public interface HallTerminRepository extends JpaRepository<HallTermin, Long> {
 
     List<HallTermin> findAll();
+    List<HallTermin> findAllByFree(boolean free);
 }

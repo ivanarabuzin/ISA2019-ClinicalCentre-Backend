@@ -56,4 +56,19 @@ public class HallTerminServiceImpl implements HallTerminService {
         return result;
     }
 
+    public List<HallTermin> getFreeTerminsForClinic(long clinicId) {
+        List<HallTermin> termins = hallTerminRepository.findAllByFree(true);
+
+        List<HallTermin> result = new ArrayList<>();
+
+        for(HallTermin termin: termins) {
+
+            if(termin.getHall().getClinic().getId() == clinicId) {
+                result.add(termin);
+            }
+        }
+
+        return result;
+    }
+
 }

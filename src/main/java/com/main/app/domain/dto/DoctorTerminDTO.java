@@ -21,6 +21,7 @@ public class DoctorTerminDTO {
     AppointmentType type;
     private double price;
     private String time;
+    private String description;
 
     public DoctorTerminDTO(DoctorTermin termin) {
         this.date = termin.getDate();
@@ -29,5 +30,7 @@ public class DoctorTerminDTO {
         this.type = termin.getType();
         this.price = termin.getPrice();
         this.time = termin.getTime();
+
+        this.description = termin.getDoctor().getName() + " " + termin.getDoctor().getSurname() + " " + termin.getDate() + " " + termin.getTime();
     }
 }

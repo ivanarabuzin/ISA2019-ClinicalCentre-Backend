@@ -8,6 +8,7 @@ import com.main.app.repository.user.AppointmentRepository;
 import com.main.app.repository.user.DoctorTerminRepository;
 import com.main.app.service.email.RegistrationEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,9 @@ public class AppointmentServiceImpl implements AppointmentService {
         appointment.setType(termin.getType());
         appointment.setPatient(currentUserService.getCurrentUser().get());
         appointment.setDescription("");
+        appointment.setAdminAccepted(false);
+        appointment.setPatientAccepted(false);
+        appointment.setTermin(termin);
 
         termin.setFree(false);
 
@@ -68,5 +72,9 @@ public class AppointmentServiceImpl implements AppointmentService {
                 "aivanarabuzin.isa2019@gmail.com", "You have new appointment");
 
         return appointment;
+    }
+
+    public Page<Appointment> findAllByAdminAccepted(boolean adminAccepted, Pageable pageable) {
+        return appointmentRepository.findAllByAdminAccepted(adminAccepted, pageable);
     }
 }

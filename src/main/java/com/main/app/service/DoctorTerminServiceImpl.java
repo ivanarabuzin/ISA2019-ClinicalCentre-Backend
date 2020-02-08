@@ -98,4 +98,21 @@ public class DoctorTerminServiceImpl implements DoctorTerminService {
 
         return result;
     }
+
+    public List<DoctorTermin> getFreeTerminsForClinic(long clinicId) {
+
+        List<DoctorTermin> termins = doctorTerminRepository.findAllByFree(true);
+
+        List<DoctorTermin> result = new ArrayList<>();
+
+        for(DoctorTermin termin: termins) {
+
+            if(termin.getDoctor().getClinic().getId() == clinicId) {
+                result.add(termin);
+            }
+
+        }
+
+        return result;
+    }
 }

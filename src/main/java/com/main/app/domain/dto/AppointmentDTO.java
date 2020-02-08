@@ -23,6 +23,7 @@ public class AppointmentDTO {
     private UserDTO doctor;
     private UserDTO patient;
     private ClinicDTO clinic;
+    private DoctorTerminDTO termin;
 
     public AppointmentDTO(Appointment appointment) {
         this.id = appointment.getId();
@@ -35,5 +36,6 @@ public class AppointmentDTO {
         this.doctor = new UserDTO(appointment.getDoctor());
         this.patient = new UserDTO(appointment.getPatient());
         this.clinic = new ClinicDTO(appointment.getClinic());
+        this.termin = new DoctorTerminDTO(appointment.getTermin());
     }
 }

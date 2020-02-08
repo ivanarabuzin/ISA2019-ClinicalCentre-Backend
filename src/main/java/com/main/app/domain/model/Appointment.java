@@ -27,6 +27,9 @@ public class Appointment extends AbstractEntity {
     private boolean patientAccepted;
 
     @ManyToOne
+    private DoctorTermin termin;
+
+    @ManyToOne
     private Hall hall;
 
     @ManyToOne
@@ -69,5 +72,6 @@ public class Appointment extends AbstractEntity {
         this.doctor = new User(appointment.getDoctor());
         this.patient = new User(appointment.getPatient());
         this.clinic = new Clinic(appointment.getClinic());
+        this.termin = new DoctorTermin(appointment.getTermin());
     }
 }
