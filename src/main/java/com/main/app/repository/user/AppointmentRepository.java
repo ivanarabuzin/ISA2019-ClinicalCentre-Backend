@@ -12,6 +12,7 @@ import java.util.List;
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
     List<Appointment> findAllByClinic(Clinic clinic, Pageable pageable);
-    List<Appointment> findAllByPatient(User patient, Pageable pageable);
+    List<Appointment> findAllByPatientAndAdminAcceptedAndPatientAccepted(User patient, boolean adminAccepted, boolean patientAccepted,
+                                                                         Pageable pageable);
     Page<Appointment> findAllByAdminAccepted(boolean adminAccepted, Pageable pageable);
 }

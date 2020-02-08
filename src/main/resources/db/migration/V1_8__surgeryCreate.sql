@@ -40,13 +40,15 @@ CREATE TABLE `appointment` (
     `clinic_id` bigint(20) NOT NULL,
     `type_id` bigint(20) NOT NULL,
     `termin_id` bigint(20) DEFAULT NULL,
+    `hall_termin_id` bigint(20) DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `FK_app_patient` (`patient_id`),
     KEY `FK_app_type` (`type_id`),
     KEY `FK_app_hall` (`hall_id`),
     KEY `FK_doctor_patient` (`doctor_id`),
     KEY `FK_clinic_patient` (`clinic_id`),
-    KEY `FK_termin_appointment` (`termin_id`)
+    KEY `FK_termin_appointment` (`termin_id`),
+    KEY `FK_hall_termin_appointment` (`hall_termin_id`)
 );
 
 INSERT INTO `appointment` (`id`, `date`, `type_id`, `description`, `price`, `is_taken`, `deleted`, `date_created`, `date_deleted`, `date_updated`, `clinic_id`, `patient_id`, `hall_id`, `doctor_id`) VALUES

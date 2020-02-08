@@ -30,6 +30,9 @@ public class Appointment extends AbstractEntity {
     private DoctorTermin termin;
 
     @ManyToOne
+    private HallTermin hallTermin;
+
+    @ManyToOne
     private Hall hall;
 
     @ManyToOne

@@ -54,6 +54,15 @@ public class AppointmentController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @GetMapping(path="/patient/history")
+    public ResponseEntity<Entities> findAllByPatientHistory(Pageable pageable) {
+
+        Entities result = new Entities();
+        result.setEntities(appointmentService.findAllByPatientHistory(userService.getCurrentUser().get(), pageable));
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @GetMapping(path = "/unconfirmed")
     public ResponseEntity<Entities> findAllUnconfirmed(Pageable pageable) {
         Entities result = new Entities();
@@ -77,6 +86,31 @@ public class AppointmentController {
     public ResponseEntity<AppointmentDTO> fromTermin(@PathVariable long terminId) {
 
         Appointment appointment = appointmentService.createFromTermin(terminId);
+
+        return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/approve/{appointmentId}/{terminId}/{hallId}")
+    public ResponseEntity<AppointmentDTO> approveAppointment(@PathVariable long appointmentId, @PathVariable long terminId,
+                                                             @PathVariable long hallId)
+    {
+        Appointment appointment = appointmentService.approveAppointment(appointmentId, terminId, hallId);
+
+        return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/accept/{appointmentId}")
+    public ResponseEntity<AppointmentDTO> accept(@PathVariable long appointmentId) {
+
+        Appointment appointment = appointmentService.changePatientStatus(appointmentId, true);
+
+        return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/reject/{appointmentId}")
+    public ResponseEntity<AppointmentDTO> reject(@PathVariable long appointmentId) {
+
+        Appointment appointment = appointmentService.changePatientStatus(appointmentId, false);
 
         return new ResponseEntity<>(new AppointmentDTO(appointment), HttpStatus.OK);
     }

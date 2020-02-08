@@ -86,6 +86,14 @@ public class UserServiceImpl implements UserService {
 
         User savedUser = userRepository.save(user);
 
+        registrationEmailService.sendEmail(
+                deeplinkUrl,
+                "?registrationToken=" + savedUser.getRegistrationToken(),
+                emailFrom,
+                savedUser.getEmail(),
+                StaticData.URL_PART_Deliverer
+        );
+
         return savedUser;
     }
 

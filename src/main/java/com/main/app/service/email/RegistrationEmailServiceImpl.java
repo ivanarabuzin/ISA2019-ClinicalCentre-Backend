@@ -63,4 +63,13 @@ public class RegistrationEmailServiceImpl implements RegistrationEmailService {
                 message
         );
     }
+
+    public void sendBasicEmail(String emailFrom, String emailTo, String message, String subject) {
+        emailClient.sendMimeEmail(
+                emailFrom,
+                emailTo,
+                subject,
+                message
+        );
+    }
 }

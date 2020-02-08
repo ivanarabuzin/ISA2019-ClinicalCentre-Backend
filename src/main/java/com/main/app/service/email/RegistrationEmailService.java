@@ -9,5 +9,6 @@ public interface RegistrationEmailService {
     void sendDeclineEmail(String emailFrom, String emailTo, String message);
 
     void sendAdminAppointmentNotification(String emailFrom, String emailTo, String message);
+    void sendBasicEmail(String emailFrom, String emailTo, String message, String subject);
 }
 
