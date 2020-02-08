@@ -9,6 +9,15 @@
 <li>If you have antivirus installed please stop it while running software or emails could have problem</li>
 </ul>
 
+<h3>Technology used:</h3>
+<ul>
+<li>Java Spring</li>
+<li>MySql</li>
+<li>Hibernate</li>
+<li>Flyway</li>
+<li>Lombok</li>
+</ul>
+
 <h3>Build and run</h3>
 
 <p>Open project using Intellij and click "Run Application" button (green one in top right corner). Please make sure to set application configuration to your Java version</p>
