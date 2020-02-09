@@ -1,8 +1,11 @@
 package com.main.app.service;
 
 import com.main.app.config.SecurityUtils;
+import com.main.app.domain.model.Appointment;
+import com.main.app.domain.model.Clinic;
 import com.main.app.domain.model.user.User;
 import com.main.app.enums.Role;
+import com.main.app.repository.user.AppointmentRepository;
 import com.main.app.repository.user.UserRepository;
 import com.main.app.service.email.RegistrationEmailService;
 import com.main.app.staticData.StaticData;
@@ -14,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,6 +33,7 @@ public class UserServiceImpl implements UserService {
 
     private CurrentUserService currentUserService;
     private RegistrationEmailService registrationEmailService;
+    private AppointmentRepository appointmentRepository;
 
     @Value("${spring.deeplink}")
     private String deeplinkUrl;
@@ -39,11 +45,13 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(
             UserRepository repository,
             CurrentUserService currentUserService,
-            RegistrationEmailService registrationEmailService
+            RegistrationEmailService registrationEmailService,
+            AppointmentRepository appointmentRepository
     ) {
         this.userRepository = repository;
         this.currentUserService = currentUserService;
         this.registrationEmailService = registrationEmailService;
+        this.appointmentRepository = appointmentRepository;
     }
 
     public Optional<User> getCurrentUser() {
@@ -85,14 +93,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(UserUtil.encriptUserPassword(user.getPassword()));
 
         User savedUser = userRepository.save(user);
-
-        registrationEmailService.sendEmail(
-                deeplinkUrl,
-                "?registrationToken=" + savedUser.getRegistrationToken(),
-                emailFrom,
-                savedUser.getEmail(),
-                StaticData.URL_PART_Deliverer
-        );
 
         return savedUser;
     }
@@ -157,5 +157,51 @@ public class UserServiceImpl implements UserService {
         );
 
         return databaseUser;
+    }
+
+    public List<User> getRateList(Pageable page) {
+
+        User user = currentUserService.getCurrentUser().get();
+
+        List<Appointment> appointments = appointmentRepository.findAllByPatientAndAdminAcceptedAndPatientAccepted(user,
+                true, true, page);
+
+        List<User> doctors = new ArrayList<>();
+
+        for(Appointment a: appointments) {
+
+            if(doctorExists(doctors, a.getDoctor())) {
+                continue;
+            }
+
+            doctors.add(a.getDoctor());
+        }
+
+        return doctors;
+    }
+
+    private boolean doctorExists(List<User> users, User doctor) {
+
+        for(User u: users) {
+
+            if(u.getId() == doctor.getId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public User rate(long doctorId, int rate) {
+
+        User user = userRepository.findById(doctorId).get();
+
+        user.setRateCount(user.getRateCount() + 1);
+        user.setRateSum(user.getRateSum() + rate);
+        user.setAverageRate(user.getRateSum() / user.getRateCount());
+
+        userRepository.save(user);
+
+        return user;
     }
 }

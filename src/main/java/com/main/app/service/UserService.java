@@ -1,10 +1,12 @@
 package com.main.app.service;
 
+import com.main.app.domain.model.Clinic;
 import com.main.app.domain.model.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -24,4 +26,7 @@ public interface UserService {
     Page<User> getUnconfirmedUsers(Pageable pageable);
     User confirmUser(Long id);
     User declineUser(Long id, String message);
+
+    List<User> getRateList(Pageable page);
+    User rate(long doctorId, int rate);
 }

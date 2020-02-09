@@ -1,7 +1,9 @@
 package com.main.app.controller;
 
+import com.main.app.domain.dto.ClinicDTO;
 import com.main.app.domain.dto.Entities;
 import com.main.app.domain.dto.UserDTO;
+import com.main.app.domain.model.Clinic;
 import com.main.app.domain.model.user.User;
 import com.main.app.service.CurrentUserService;
 import com.main.app.service.UserService;
@@ -11,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * REST controller exposing API for register drivers and customers.
@@ -121,6 +125,24 @@ public class UserController {
 
         User saved = userService.editProfile(user);
 
+        return new ResponseEntity<>(new UserDTO(saved), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/rate/list")
+    public ResponseEntity<Entities> getRateList(Pageable page) {
+        Entities result = new Entities();
+
+        List<User> users = userService.getRateList(page);
+
+        result.setEntities(users);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PostMapping(path = "/rate/{doctorId}/{rate}")
+    public ResponseEntity<UserDTO> rate(@PathVariable long doctorId, @PathVariable int rate) {
+
+        User saved = userService.rate(doctorId, rate);
         return new ResponseEntity<>(new UserDTO(saved), HttpStatus.OK);
     }
 }

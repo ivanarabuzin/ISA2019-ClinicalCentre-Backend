@@ -20,6 +20,10 @@ public class ClinicDTO
     private String phoneNumber;
     private double price;
 
+    private double rateCount;
+    private double rateSum;
+    private double averageRate;
+
     public ClinicDTO(Clinic clinic) {
         this.id = clinic.getId();
         this.name = clinic.getName();
@@ -28,5 +32,8 @@ public class ClinicDTO
         this.city = clinic.getCity();
         this.phoneNumber = clinic.getPhoneNumber();
         this.price = clinic.getPrice();
+        this.rateCount = clinic.getRateCount();
+        this.rateSum = clinic.getRateSum();
+        this.averageRate = clinic.getAverageRate();
     }
 }

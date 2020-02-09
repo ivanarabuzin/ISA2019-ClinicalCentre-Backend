@@ -57,6 +57,12 @@ public class User extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    private double rateCount;
+
+    private double rateSum;
+
+    private double averageRate;
+
     @ManyToOne
     private Clinic clinic;
 
@@ -80,5 +86,8 @@ public class User extends AbstractEntity {
         this.phoneNumber = user.getPhoneNumber();
         this.jbo = user.getJbo();
         this.city = user.getCity();
+        this.rateCount = user.getRateCount();
+        this.rateSum = user.getRateSum();
+        this.averageRate = user.getAverageRate();
     }
 }

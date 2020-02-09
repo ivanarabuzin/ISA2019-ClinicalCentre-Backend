@@ -25,6 +25,10 @@ public class UserDTO {
     private String phoneNumber;
     private String jbo;
 
+    private double rateCount;
+    private double rateSum;
+    private double averageRate;
+
     public UserDTO(User user) {
         this.id = user.getId();
         this.email = user.getEmail();
@@ -37,5 +41,8 @@ public class UserDTO {
         this.phoneNumber = user.getPhoneNumber();
         this.jbo = user.getJbo();
         this.city = user.getCity();
+        this.rateCount = user.getRateCount();
+        this.rateSum = user.getRateSum();
+        this.averageRate = user.getAverageRate();
     }
 }

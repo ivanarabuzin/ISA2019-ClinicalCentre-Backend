@@ -67,5 +67,8 @@ INSERT INTO `user` (`id`, `email`, `password`, `admin_registration_confirmed`, `
 '2011-11-11 00:00:00', 'Tolstojeva 89', 'Beograd', 'Serbia', '+381115633333', '998523456789', '6'),
 
 ('19', 'test18@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Goran', 'Cvijović', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
-'2011-11-11 00:00:00', 'Miše Dimitrijevića 6', 'Beograd', 'Serbia', '+381115633333', '998523456789', '7');
+'2011-11-11 00:00:00', 'Miše Dimitrijevića 6', 'Beograd', 'Serbia', '+381115633333', '998523456789', '7'),
+
+('20', 'test19@gmail.com', '$2a$10$gDqfRHdeFeiopzJ3MSNiLOdYsTDU/RJWhTr5OJvGHE3355C5OLDDm', 1, 'Anja', 'Andrić', 1, 'DOCTOR', 0, '2011-11-11 00:00:00','2011-11-11 00:00:00',
+'2011-11-11 00:00:00', 'Miše Dimitrijevića 6', 'Beograd', 'Serbia', '+381115633333', '998523456789', '5');
 
