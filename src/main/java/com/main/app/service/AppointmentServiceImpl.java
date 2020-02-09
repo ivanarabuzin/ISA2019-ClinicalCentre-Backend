@@ -61,9 +61,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public Appointment createFromTermin(long terminId) {
 
         DoctorTermin termin = doctorTerminRepository.findById(terminId).get();
+
+        if(!termin.isFree()) {
+            return null;
+        }
 
         Appointment appointment = new Appointment();
         appointment.setDate(termin.getDate());
